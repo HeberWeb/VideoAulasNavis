@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace AddinRibbon
 {
-    [Plugin("ClDockPanelUpdate", "AUTODOC", DisplayName = "ClDockPanelUpdate")]
+    [Plugin("ClDockPanelUpdate", "AUTODOC", DisplayName = "Dynamic Update")]
     [DockPanePlugin(200,400, AutoScroll = true, MinimumHeight = 100, MinimumWidth = 200)]
     class ClDockPanelUpdate : DockPanePlugin
     {

@@ -22,7 +22,7 @@ namespace AddinRibbon
 
                     if (!Autodesk.Navisworks.Api.Application.IsAutomated)
                     {
-                        var pluginRecord = Autodesk.Navisworks.Api.Application.Plugins.FindPlugin("ClDockPanelUpdate.AUTODOC");
+                        PluginRecord pluginRecord = Autodesk.Navisworks.Api.Application.Plugins.FindPlugin("ClDockPanelUpdate.AUTODOC");
 
                         if (pluginRecord is DockPanePluginRecord && pluginRecord.IsEnabled)
                         {
