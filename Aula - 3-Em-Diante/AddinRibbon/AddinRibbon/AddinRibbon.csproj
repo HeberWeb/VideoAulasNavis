@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Plugins\AddinRibbon\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Plugins\AddinRibbon\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,16 +33,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\AdWindows.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.Navisworks.Api">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Api.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Api.dll</HintPath>
     </Reference>
     <Reference Include="navisworks.gui.roamer">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\navisworks.gui.roamer.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\navisworks.gui.roamer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,9 +74,17 @@
       <DependentUpon>UcUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\icon-logoautodoc-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-logoautodoc-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set path=C:\Users\Heber\Documents\Sistemas\Autodoc\EstudosPlugin\Aula - 3 - Custom Ribbon\AddinRibbon\AddinRibbon\AddinRibbon.xaml
+    <PostBuildEvent>set path=$(ProjectDir)AddinRibbon.xaml
 
 
 set addinPath=C:\Program Files\Autodesk\Navisworks Manage 2021\Plugins\AddinRibbon\
@@ -88,6 +93,9 @@ set addinPath1=C:\Program Files\Autodesk\Navisworks Manage 2021\Plugins\AddinRib
 mkdir "%25addinPath1%25"
 
 copy/Y "%25path%25" "%25addinPath%25"
-copy/Y "%25path%25" "%25addinPath1%25"</PostBuildEvent>
+copy/Y "%25path%25" "%25addinPath1%25"
+
+copy /Y "$(ProjectDir)Images\*.*" "$(ProgramW6432)\Autodesk\Navisworks Manage 2021\Plugins\$(TargetName)\Images\"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
