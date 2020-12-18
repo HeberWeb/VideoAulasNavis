@@ -27,6 +27,9 @@ namespace AddinRibbon.Ctr
 
             UpTimer.Tick += UpTimer_Tick;
 
+            this.tbLog.AppendText(string.Concat("Monitoring Models...",
+                            Environment.NewLine));
+
             Autodesk.Navisworks.Api.Application.ActiveDocumentChanged += Application_ActiveDocumentChanged;
         }
 
@@ -126,6 +129,8 @@ namespace AddinRibbon.Ctr
         private void clearLog_MouseUp(object sender, MouseEventArgs e)
         {
             this.tbLog.Clear();
+            this.tbLog.AppendText(string.Concat("Monitoring Models...",
+                Environment.NewLine));
         }
     }
 }

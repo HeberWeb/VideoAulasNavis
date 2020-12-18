@@ -16,16 +16,39 @@ namespace AddinRibbon
     [DockPanePlugin(200,400, AutoScroll = true, MinimumHeight = 100, MinimumWidth = 200)]
     class ClDockPanelUpdate : DockPanePlugin
     {
+        /// <summary>
+        /// Aula 4 e 6 Edições tab pages
+        /// </summary>
+        /// <returns></returns>
         public override Control CreateControlPane()
         {
-            return new UcUpdate() { Dock = DockStyle.Fill };
+            TabControl tc = new TabControl();
+            tc.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
+            tc.PaddingChanged += SetDockStyle;
+            
+            TabPage tp1 = new TabPage("Auto Update");
+            
+            tp1.Controls.Add(new UcUpdate() { Dock = DockStyle.Fill });
+            tc.TabPages.Add(tp1);
+
+            TabPage tp2 = new TabPage("Properties");
+            tp2.Controls.Add(new UcProperties() { Dock = DockStyle.Fill });
+            tc.TabPages.Add(tp2);
+
+            return tc;
+        }
+
+        private void SetDockStyle(object sender, EventArgs e)
+        {
+            TabControl tc = sender as TabControl;
+            tc.Dock = DockStyle.Fill;
         }
 
         public override void DestroyControlPane(Control pane)
         {
             try
             {
-                var ctr = (UcUpdate)pane;
+                var ctr = (TabControl)pane;
                 ctr?.Dispose();
             }
             catch (Exception e)

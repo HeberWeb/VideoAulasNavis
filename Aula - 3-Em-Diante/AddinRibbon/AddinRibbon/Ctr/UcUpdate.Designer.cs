@@ -68,9 +68,10 @@
             // 
             // clearLog
             // 
-            this.clearLog.Location = new System.Drawing.Point(4, 431);
+            this.clearLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.clearLog.Location = new System.Drawing.Point(0, 434);
             this.clearLog.Name = "clearLog";
-            this.clearLog.Size = new System.Drawing.Size(292, 23);
+            this.clearLog.Size = new System.Drawing.Size(299, 23);
             this.clearLog.TabIndex = 0;
             this.clearLog.Text = "Clear Log";
             this.clearLog.UseVisualStyleBackColor = true;
@@ -78,11 +79,17 @@
             // 
             // tbLog
             // 
-            this.tbLog.Location = new System.Drawing.Point(4, 78);
+            this.tbLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLog.Location = new System.Drawing.Point(3, 77);
+            this.tbLog.Margin = new System.Windows.Forms.Padding(5);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
-            this.tbLog.Size = new System.Drawing.Size(292, 347);
+            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbLog.Size = new System.Drawing.Size(292, 335);
             this.tbLog.TabIndex = 4;
+            this.tbLog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UcUpdate
             // 

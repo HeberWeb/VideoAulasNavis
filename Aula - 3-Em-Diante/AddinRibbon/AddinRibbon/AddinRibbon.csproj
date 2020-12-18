@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="ClAddin.cs" />
     <Compile Include="ClDockPanelUpdate.cs" />
+    <Compile Include="Ctr\UcProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctr\UcProperties.Designer.cs">
+      <DependentUpon>UcProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ctr\UcUpdate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddinRibbon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ctr\UcProperties.resx">
+      <DependentUpon>UcProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ctr\UcUpdate.resx">
       <DependentUpon>UcUpdate.cs</DependentUpon>
