@@ -8,6 +8,9 @@ using Autodesk.Navisworks.Api.Plugins;
 
 namespace AddinRibbon
 {
+    /// <summary>
+    /// Aula 3 e 4(Ação dockpanel)
+    /// </summary>
     [Plugin("AddinRibbon", "AUTODOC", DisplayName = "AddinRibbon")]
     [RibbonLayout("AddinRibbon.xaml")]
     [RibbonTab("ID_Custom_1", DisplayName = "Teste Ribbon")]

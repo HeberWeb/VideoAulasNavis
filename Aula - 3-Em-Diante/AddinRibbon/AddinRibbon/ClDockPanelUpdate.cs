@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace AddinRibbon
 {
+    /// <summary>
+    /// Aula 4
+    /// </summary>
     [Plugin("ClDockPanelUpdate", "AUTODOC", DisplayName = "Dynamic Update")]
     [DockPanePlugin(200,400, AutoScroll = true, MinimumHeight = 100, MinimumWidth = 200)]
     class ClDockPanelUpdate : DockPanePlugin
