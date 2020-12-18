@@ -11,7 +11,7 @@ namespace AddinRibbon
     [Plugin("AddinRibbon", "AUTODOC", DisplayName = "AddinRibbon")]
     [RibbonLayout("AddinRibbon.xaml")]
     [RibbonTab("ID_Custom_1", DisplayName = "Teste Ribbon")]
-    [Command("ID_Button_1", Icon = "icon-logoautodoc-16.png", LargeIcon = "icon-logoautodoc-32.png", ToolTip = "Show a Message")]
+    [Command("ID_Button_1", Icon = "icon-logoautodoc-16.png", LargeIcon = "icon-logoautodoc-32.png", ToolTip = "Show a Message", DisplayName = "Updates")]
     public class ClAddin : CommandHandlerPlugin
     {
         public override int ExecuteCommand(string name, params string[] parameters)

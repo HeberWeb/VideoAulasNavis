@@ -17,7 +17,7 @@
                                       Size="Large"
                                       KeyTip="B1"
                                       ShowText="True"
-                                      Text="Button_1" />
+                                      Text="Updates" />
 
             </RibbonPanelSource> 
         </RibbonPanel>
