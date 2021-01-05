@@ -118,5 +118,25 @@ namespace AddinRibbon.Ctr
 
             Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.AddRange(r);
         }
+
+        /// <summary>
+        /// Aula 8
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btCreateSet_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Aula 8
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btCreateSearch_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
