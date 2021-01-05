@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autodesk.Navisworks.Api;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,15 +28,10 @@ namespace AddinRibbon.Ctr
         /// <param name="e"></param>
         private void ListenSelection(object sender, EventArgs e)
         {
-            try
+            if(Autodesk.Navisworks.Api.Application.ActiveDocument != null)
             {
                 Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.Changed += GetProperties;
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            
+            } 
         }
 
         /// <summary>
@@ -59,7 +55,7 @@ namespace AddinRibbon.Ctr
                     //Percorre propriedades das categorias dos elementos selecionados
                     foreach (var prop in cat.Properties)
                     {
-                        result.Add(string.Concat(".     .       ", prop.DisplayName, "> ", GetPropertyValeu(prop)));
+                        result.Add(string.Concat(".     .       ", prop.DisplayName, " > ", GetPropertyValeu(prop)));
                     }
                 }
 
@@ -71,7 +67,14 @@ namespace AddinRibbon.Ctr
 
         private string GetPropertyValeu(Autodesk.Navisworks.Api.DataProperty prop)
         {
-            return prop.Value.IsDisplayString ? prop.Value.ToDisplayString() : prop.Value.ToString().Split(':')[1];
+            try
+            {
+                return prop.Value.IsDisplayString ? prop.Value.ToDisplayString() : prop.Value.ToString().Split(':')[1];
+            }
+            catch (Exception e)
+            {
+                return "Erro ao resgatar valor da propriedade (" + e.Message + ")";
+            }
         }
 
         /// <summary>
@@ -85,13 +88,35 @@ namespace AddinRibbon.Ctr
         }
 
         /// <summary>
-        /// Aula 6 propriedades
+        /// Aula 6 propriedades e ações na aula 7
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btFind_MouseUp(object sender, MouseEventArgs e)
         {
+            List<ModelItem> r = new List<ModelItem>();
 
+            foreach (var item in Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.SelectedItems)
+            {
+                var cat = item.DescendantsAndSelf
+                    .Where(x => x.PropertyCategories
+                        .FindCategoryByDisplayName(this.tbCategoryName.Text) != null);
+
+                var pro = cat
+                    .Where(x => x.PropertyCategories
+                        .FindCategoryByDisplayName(tbCategoryName.Text)
+                        .Properties
+                        .FindPropertyByDisplayName(this.tbPropertyName.Text) != null);
+
+                r.AddRange(pro.Where(x => this.GetPropertyValeu(x.PropertyCategories
+                        .FindCategoryByDisplayName(tbCategoryName.Text)
+                        .Properties
+                        .FindPropertyByDisplayName(this.tbPropertyName.Text)) == this.tbPropertyValue.Text));
+            }
+
+            Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.Clear();
+
+            Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.AddRange(r);
         }
     }
 }
