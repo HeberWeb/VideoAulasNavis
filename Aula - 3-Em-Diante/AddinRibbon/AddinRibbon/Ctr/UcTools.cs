@@ -19,12 +19,49 @@ namespace AddinRibbon.Ctr
     /// </summary>
     public partial class UcTools : UserControl
     {
-        public ModelItemCollection LastSelection { get; private set; }
-        public string LastSelName { get; private set; }
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        public static Timer TranslateTime { get; } = new Timer() { Enabled = true, Interval = 50 };
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        public static System.Drawing.Color FocusedColor { get; } = System.Drawing.Color.ForestGreen;
+        /// <summary>
+        /// Aula 9
+        /// </summary>
+        public ModelItemCollection LastIsolated { get; private set; }
+        /// <summary>
+        /// Aula 9
+        /// </summary>
+        public string LastIsolatedName { get; private set; }
 
         public UcTools()
         {
             InitializeComponent();
+
+            TranslateTime.Tick += Translate;
+        }
+
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Translate(object sender, EventArgs e)
+        {
+            if (!MouseButtons.Equals(MouseButtons.Left)) return;
+            this.MoveElements();
+        }
+
+        private void MoveElements()
+        {
+            var acd = NavisworksApp.ActiveDocument;
+
+            var x = 0;
+            var y = 0;
+            var z = 0;
+            var inc = 5;
         }
 
         /// <summary>
@@ -90,8 +127,8 @@ namespace AddinRibbon.Ctr
                 sel.AddRange(se.DescendantsAndSelf);
                 sel.AddRange(se.Ancestors);
 
-                LastSelection = sel;
-                LastSelName = se.DisplayName;
+                LastIsolated = sel;
+                LastIsolatedName = se.DisplayName;
             }
             catch (Exception e)
             {
@@ -108,8 +145,8 @@ namespace AddinRibbon.Ctr
 
             try
             {
-                acd.Models.OverridePermanentColor(LastSelection, new Autodesk.Navisworks.Api.Color(0, 1, 0));
-                acd.Models.OverridePermanentTransparency(LastSelection, 0.5);
+                acd.Models.OverridePermanentColor(LastIsolated, new Autodesk.Navisworks.Api.Color(0, 1, 0));
+                acd.Models.OverridePermanentTransparency(LastIsolated, 0.5);
 
                 var state = ComApiBridge.State;
                 var cv = state.CurrentView.Copy();
@@ -119,7 +156,7 @@ namespace AddinRibbon.Ctr
                 view.ApplyHideAttribs = true;
                 view.ApplyMaterialAttribs = true;
 
-                vp.Name = LastSelName;
+                vp.Name = LastIsolatedName;
                 vp.anonview = cv;
 
                 state.SavedViews().Add(vp);
@@ -128,6 +165,96 @@ namespace AddinRibbon.Ctr
             {
                 //
             }
+        }
+
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoYPlus_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoYLess_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoXPlus_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoXLess_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoZPlus_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEixoZLess_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btTurnRigth_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btTurnLeft_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+        /// <summary>
+        /// Aula 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btReset_MouseUp(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
