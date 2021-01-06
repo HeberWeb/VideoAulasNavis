@@ -95,6 +95,7 @@ namespace AddinRibbon.Ctr
             }
             catch (Exception e)
             {
+                //
             }
         }
 
@@ -125,6 +126,7 @@ namespace AddinRibbon.Ctr
             }
             catch (Exception e)
             {
+                //
             }
         }
     }
