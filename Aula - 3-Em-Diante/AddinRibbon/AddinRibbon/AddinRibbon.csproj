@@ -38,6 +38,13 @@
     <Reference Include="Autodesk.Navisworks.Api">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Api.dll</HintPath>
     </Reference>
+    <Reference Include="Autodesk.Navisworks.ComApi">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.ComApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Autodesk.Navisworks.Interop.ComApi">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Interop.ComApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="navisworks.gui.roamer">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\navisworks.gui.roamer.dll</HintPath>
     </Reference>
@@ -64,6 +71,12 @@
     <Compile Include="Ctr\UcProperties.Designer.cs">
       <DependentUpon>UcProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ctr\UcTools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctr\UcTools.Designer.cs">
+      <DependentUpon>UcTools.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ctr\UcUpdate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ctr\UcProperties.resx">
       <DependentUpon>UcProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ctr\UcTools.resx">
+      <DependentUpon>UcTools.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ctr\UcUpdate.resx">
       <DependentUpon>UcUpdate.cs</DependentUpon>

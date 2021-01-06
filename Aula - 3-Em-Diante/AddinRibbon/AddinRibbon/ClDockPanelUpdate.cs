@@ -34,6 +34,10 @@ namespace AddinRibbon
             TabPage tp2 = new TabPage("Properties");
             tp2.Controls.Add(new UcProperties() { Dock = DockStyle.Fill });
             tc.TabPages.Add(tp2);
+            
+            TabPage tp3 = new TabPage("Tools");
+            tp3.Controls.Add(new UcTools() { Dock = DockStyle.Fill });
+            tc.TabPages.Add(tp3);
 
             return tc;
         }
