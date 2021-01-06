@@ -18,6 +18,7 @@ namespace AddinRibbon.Ctr
         {
             InitializeComponent();
 
+            this.cxPause.Checked = true;
             this.ListenSelection(null, null);
             App.ActiveDocumentChanged += ListenSelection;
         }
