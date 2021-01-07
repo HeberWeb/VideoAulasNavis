@@ -11,6 +11,7 @@ using NavisworksApp = Autodesk.Navisworks.Api.Application;
 using Autodesk.Navisworks.Api.Interop.ComApi;
 using Autodesk.Navisworks.Api.ComApi;
 using Autodesk.Navisworks.Api;
+using Autodesk.Navisworks.Api.Clash;
 
 namespace AddinRibbon.Ctr
 {
@@ -311,6 +312,57 @@ namespace AddinRibbon.Ctr
             catch (Exception e)
             {
                 //
+            }
+        }
+
+        /// <summary>
+        /// Aula 11
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbCkeck_MouseUp(object sender, MouseEventArgs e)
+        {
+            var acd = NavisworksApp.ActiveDocument;
+            var allItems = new ModelItemCollection();
+
+            allItems.AddRange(acd.CurrentSelection.SelectedItems);
+
+            var cb = new ModelItemCollection();
+
+            foreach (var modelItem in allItems)
+            {
+                cb.Clear();
+                cb.AddRange(allItems);
+                cb.Remove(modelItem);
+
+                // Cria o teste de clash
+                var ct = new ClashTest { CustomTestName = modelItem.DisplayName };
+                ct.DisplayName = ct.CustomTestName;
+
+                ct.TestType = ClashTestType.Hard;
+
+                //Scala de conversão
+                var sc = UnitConversion.ScaleFactor(acd.Models.First.Units, Units.Millimeters);
+                ct.Tolerance = Convert.ToDouble(1 / sc);
+
+                ct.SelectionA.SelfIntersect = false;
+                ct.SelectionA.PrimitiveTypes = PrimitiveTypes.Triangles;
+                ct.SelectionB.SelfIntersect = false;
+                ct.SelectionB.PrimitiveTypes = PrimitiveTypes.Triangles;
+
+                ct.SelectionA.Selection.CopyFrom(new ModelItemCollection() { modelItem });
+                ct.SelectionB.Selection.CopyFrom(cb);
+
+                try
+                {
+                    var dc = acd.Clash as DocumentClash;
+                    var tcopy = (ClashTest)ct.CreateCopy();
+                    dc.TestsData.TestsAddCopy(tcopy);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
             }
         }
 

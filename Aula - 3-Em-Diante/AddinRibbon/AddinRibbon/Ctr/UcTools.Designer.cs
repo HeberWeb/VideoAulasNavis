@@ -240,10 +240,9 @@ namespace AddinRibbon.Ctr
             this.lbCheckSelection.TabIndex = 14;
             this.lbCheckSelection.Text = "Check Selection";
             this.lbCheckSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbCheckSelection.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
             this.lbCheckSelection.MouseLeave += new System.EventHandler(this.LbUnfocused);
             this.lbCheckSelection.MouseHover += new System.EventHandler(this.LbFocused);
-            this.lbCheckSelection.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            this.lbCheckSelection.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbCkeck_MouseUp);
             // 
             // UcTools
             // 

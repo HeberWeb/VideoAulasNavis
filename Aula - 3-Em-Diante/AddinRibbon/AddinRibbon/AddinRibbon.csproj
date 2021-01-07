@@ -38,6 +38,9 @@
     <Reference Include="Autodesk.Navisworks.Api">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Api.dll</HintPath>
     </Reference>
+    <Reference Include="Autodesk.Navisworks.Clash">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.Clash.dll</HintPath>
+    </Reference>
     <Reference Include="Autodesk.Navisworks.ComApi">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2021\Autodesk.Navisworks.ComApi.dll</HintPath>
     </Reference>
