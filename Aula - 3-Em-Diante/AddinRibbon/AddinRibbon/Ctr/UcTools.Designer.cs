@@ -46,6 +46,7 @@ namespace AddinRibbon.Ctr
             this.LbTurnRigth = new System.Windows.Forms.Label();
             this.LbTurnLeft = new System.Windows.Forms.Label();
             this.lbCenterLogEixos = new System.Windows.Forms.Label();
+            this.lbCheckSelection = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btIsolateSelection
@@ -224,14 +225,31 @@ namespace AddinRibbon.Ctr
             this.lbCenterLogEixos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbCenterLogEixos.Location = new System.Drawing.Point(4, 246);
             this.lbCenterLogEixos.Name = "lbCenterLogEixos";
-            this.lbCenterLogEixos.Size = new System.Drawing.Size(281, 192);
+            this.lbCenterLogEixos.Size = new System.Drawing.Size(281, 140);
             this.lbCenterLogEixos.TabIndex = 13;
             this.lbCenterLogEixos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCheckSelection
+            // 
+            this.lbCheckSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbCheckSelection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCheckSelection.Location = new System.Drawing.Point(4, 398);
+            this.lbCheckSelection.Name = "lbCheckSelection";
+            this.lbCheckSelection.Size = new System.Drawing.Size(281, 40);
+            this.lbCheckSelection.TabIndex = 14;
+            this.lbCheckSelection.Text = "Check Selection";
+            this.lbCheckSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCheckSelection.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.lbCheckSelection.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.lbCheckSelection.MouseHover += new System.EventHandler(this.LbFocused);
+            this.lbCheckSelection.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
             // 
             // UcTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbCheckSelection);
             this.Controls.Add(this.lbCenterLogEixos);
             this.Controls.Add(this.LbTurnLeft);
             this.Controls.Add(this.LbTurnRigth);
@@ -268,5 +286,6 @@ namespace AddinRibbon.Ctr
         private System.Windows.Forms.Label LbTurnRigth;
         private System.Windows.Forms.Label LbTurnLeft;
         private Label lbCenterLogEixos;
+        private Label lbCheckSelection;
     }
 }

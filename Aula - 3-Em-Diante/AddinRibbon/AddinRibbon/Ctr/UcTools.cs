@@ -27,7 +27,7 @@ namespace AddinRibbon.Ctr
         /// <summary>
         /// Aula 10
         /// </summary>
-        public static System.Drawing.Color FocusedColor { get; } = System.Drawing.Color.HotPink ;
+        public static System.Drawing.Color FocusedColor { get; } = System.Drawing.Color.SkyBlue;
        
         /// <summary>
         /// Aula 10
