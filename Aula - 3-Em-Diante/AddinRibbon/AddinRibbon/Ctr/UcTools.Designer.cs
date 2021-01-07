@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace AddinRibbon.Ctr
 {
     partial class UcTools
@@ -32,16 +35,17 @@ namespace AddinRibbon.Ctr
             this.btIsolateSelection = new System.Windows.Forms.Button();
             this.btSaveViewPoint = new System.Windows.Forms.Button();
             this.btIsolateSaveViewPoint = new System.Windows.Forms.Button();
-            this.btEixoYPlus = new System.Windows.Forms.Button();
-            this.btEixoYLess = new System.Windows.Forms.Button();
-            this.btEixoXPlus = new System.Windows.Forms.Button();
-            this.btEixoXLess = new System.Windows.Forms.Button();
             this.lbCenterDirectional = new System.Windows.Forms.Label();
-            this.btReset = new System.Windows.Forms.Button();
-            this.btEixoZPlus = new System.Windows.Forms.Button();
-            this.btEixoZLess = new System.Windows.Forms.Button();
-            this.btTurnRigth = new System.Windows.Forms.Button();
-            this.btTurnLeft = new System.Windows.Forms.Button();
+            this.LbEixoYPlus = new System.Windows.Forms.Label();
+            this.LbEixoYLess = new System.Windows.Forms.Label();
+            this.LbEixoXPlus = new System.Windows.Forms.Label();
+            this.LbEixoXLess = new System.Windows.Forms.Label();
+            this.LbReset = new System.Windows.Forms.Label();
+            this.LbEixoZPlus = new System.Windows.Forms.Label();
+            this.LbEixoZLess = new System.Windows.Forms.Label();
+            this.LbTurnRigth = new System.Windows.Forms.Label();
+            this.LbTurnLeft = new System.Windows.Forms.Label();
+            this.lbCenterLogEixos = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btIsolateSelection
@@ -80,119 +84,165 @@ namespace AddinRibbon.Ctr
             this.btIsolateSaveViewPoint.UseVisualStyleBackColor = true;
             this.btIsolateSaveViewPoint.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btIsolateSaveViewPoint_MouseUp);
             // 
-            // btEixoYPlus
-            // 
-            this.btEixoYPlus.Location = new System.Drawing.Point(50, 109);
-            this.btEixoYPlus.Name = "btEixoYPlus";
-            this.btEixoYPlus.Size = new System.Drawing.Size(40, 40);
-            this.btEixoYPlus.TabIndex = 3;
-            this.btEixoYPlus.Text = "Y+";
-            this.btEixoYPlus.UseVisualStyleBackColor = true;
-            this.btEixoYPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoYPlus_MouseUp);
-            // 
-            // btEixoYLess
-            // 
-            this.btEixoYLess.Location = new System.Drawing.Point(50, 195);
-            this.btEixoYLess.Name = "btEixoYLess";
-            this.btEixoYLess.Size = new System.Drawing.Size(40, 40);
-            this.btEixoYLess.TabIndex = 4;
-            this.btEixoYLess.Text = "Y-";
-            this.btEixoYLess.UseVisualStyleBackColor = true;
-            this.btEixoYLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoYLess_MouseUp);
-            // 
-            // btEixoXPlus
-            // 
-            this.btEixoXPlus.Location = new System.Drawing.Point(96, 152);
-            this.btEixoXPlus.Name = "btEixoXPlus";
-            this.btEixoXPlus.Size = new System.Drawing.Size(40, 40);
-            this.btEixoXPlus.TabIndex = 5;
-            this.btEixoXPlus.Text = "X+";
-            this.btEixoXPlus.UseVisualStyleBackColor = true;
-            this.btEixoXPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoXPlus_MouseUp);
-            // 
-            // btEixoXLess
-            // 
-            this.btEixoXLess.Location = new System.Drawing.Point(4, 152);
-            this.btEixoXLess.Name = "btEixoXLess";
-            this.btEixoXLess.Size = new System.Drawing.Size(40, 40);
-            this.btEixoXLess.TabIndex = 6;
-            this.btEixoXLess.Text = "X-";
-            this.btEixoXLess.UseVisualStyleBackColor = true;
-            this.btEixoXLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoXLess_MouseUp);
-            // 
             // lbCenterDirectional
             // 
-            this.lbCenterDirectional.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbCenterDirectional.Location = new System.Drawing.Point(50, 152);
+            this.lbCenterDirectional.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCenterDirectional.Location = new System.Drawing.Point(50, 151);
             this.lbCenterDirectional.Name = "lbCenterDirectional";
             this.lbCenterDirectional.Size = new System.Drawing.Size(40, 40);
             this.lbCenterDirectional.TabIndex = 7;
             this.lbCenterDirectional.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btReset
+            // LbEixoYPlus
             // 
-            this.btReset.Location = new System.Drawing.Point(142, 152);
-            this.btReset.Name = "btReset";
-            this.btReset.Size = new System.Drawing.Size(143, 40);
-            this.btReset.TabIndex = 8;
-            this.btReset.Text = "Reset";
-            this.btReset.UseVisualStyleBackColor = true;
-            this.btReset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btReset_MouseUp);
+            this.LbEixoYPlus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoYPlus.Location = new System.Drawing.Point(50, 106);
+            this.LbEixoYPlus.Name = "LbEixoYPlus";
+            this.LbEixoYPlus.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoYPlus.TabIndex = 3;
+            this.LbEixoYPlus.Text = "Y+";
+            this.LbEixoYPlus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoYPlus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoYPlus.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoYPlus.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoYPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
             // 
-            // btEixoZPlus
+            // LbEixoYLess
             // 
-            this.btEixoZPlus.Location = new System.Drawing.Point(142, 109);
-            this.btEixoZPlus.Name = "btEixoZPlus";
-            this.btEixoZPlus.Size = new System.Drawing.Size(40, 40);
-            this.btEixoZPlus.TabIndex = 9;
-            this.btEixoZPlus.Text = "Z+";
-            this.btEixoZPlus.UseVisualStyleBackColor = true;
-            this.btEixoZPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoZPlus_MouseUp);
+            this.LbEixoYLess.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoYLess.Location = new System.Drawing.Point(50, 195);
+            this.LbEixoYLess.Name = "LbEixoYLess";
+            this.LbEixoYLess.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoYLess.TabIndex = 4;
+            this.LbEixoYLess.Text = "Y-";
+            this.LbEixoYLess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoYLess.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoYLess.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoYLess.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoYLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
             // 
-            // btEixoZLess
+            // LbEixoXPlus
             // 
-            this.btEixoZLess.Location = new System.Drawing.Point(142, 195);
-            this.btEixoZLess.Name = "btEixoZLess";
-            this.btEixoZLess.Size = new System.Drawing.Size(40, 40);
-            this.btEixoZLess.TabIndex = 10;
-            this.btEixoZLess.Text = "Z-";
-            this.btEixoZLess.UseVisualStyleBackColor = true;
-            this.btEixoZLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btEixoZLess_MouseUp);
+            this.LbEixoXPlus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoXPlus.Location = new System.Drawing.Point(96, 151);
+            this.LbEixoXPlus.Name = "LbEixoXPlus";
+            this.LbEixoXPlus.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoXPlus.TabIndex = 5;
+            this.LbEixoXPlus.Text = "X+";
+            this.LbEixoXPlus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoXPlus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoXPlus.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoXPlus.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoXPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
             // 
-            // btTurnRigth
+            // LbEixoXLess
             // 
-            this.btTurnRigth.Location = new System.Drawing.Point(188, 109);
-            this.btTurnRigth.Name = "btTurnRigth";
-            this.btTurnRigth.Size = new System.Drawing.Size(97, 40);
-            this.btTurnRigth.TabIndex = 11;
-            this.btTurnRigth.Text = "Turn Rigth";
-            this.btTurnRigth.UseVisualStyleBackColor = true;
-            this.btTurnRigth.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btTurnRigth_MouseUp);
+            this.LbEixoXLess.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoXLess.Location = new System.Drawing.Point(4, 151);
+            this.LbEixoXLess.Name = "LbEixoXLess";
+            this.LbEixoXLess.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoXLess.TabIndex = 6;
+            this.LbEixoXLess.Text = "X-";
+            this.LbEixoXLess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoXLess.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoXLess.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoXLess.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoXLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
             // 
-            // btTurnLeft
+            // LbReset
             // 
-            this.btTurnLeft.Location = new System.Drawing.Point(188, 195);
-            this.btTurnLeft.Name = "btTurnLeft";
-            this.btTurnLeft.Size = new System.Drawing.Size(97, 40);
-            this.btTurnLeft.TabIndex = 12;
-            this.btTurnLeft.Text = "Turn Left";
-            this.btTurnLeft.UseVisualStyleBackColor = true;
-            this.btTurnLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btTurnLeft_MouseUp);
+            this.LbReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbReset.Location = new System.Drawing.Point(142, 152);
+            this.LbReset.Name = "LbReset";
+            this.LbReset.Size = new System.Drawing.Size(143, 40);
+            this.LbReset.TabIndex = 8;
+            this.LbReset.Text = "Reset";
+            this.LbReset.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbReset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbReset.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbReset.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbReset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            // 
+            // LbEixoZPlus
+            // 
+            this.LbEixoZPlus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoZPlus.Location = new System.Drawing.Point(142, 109);
+            this.LbEixoZPlus.Name = "LbEixoZPlus";
+            this.LbEixoZPlus.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoZPlus.TabIndex = 9;
+            this.LbEixoZPlus.Text = "Z+";
+            this.LbEixoZPlus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoZPlus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoZPlus.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoZPlus.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoZPlus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            // 
+            // LbEixoZLess
+            // 
+            this.LbEixoZLess.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbEixoZLess.Location = new System.Drawing.Point(142, 195);
+            this.LbEixoZLess.Name = "LbEixoZLess";
+            this.LbEixoZLess.Size = new System.Drawing.Size(40, 40);
+            this.LbEixoZLess.TabIndex = 10;
+            this.LbEixoZLess.Text = "Z-";
+            this.LbEixoZLess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbEixoZLess.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbEixoZLess.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbEixoZLess.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbEixoZLess.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            // 
+            // LbTurnRigth
+            // 
+            this.LbTurnRigth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbTurnRigth.Location = new System.Drawing.Point(188, 109);
+            this.LbTurnRigth.Name = "LbTurnRigth";
+            this.LbTurnRigth.Size = new System.Drawing.Size(97, 40);
+            this.LbTurnRigth.TabIndex = 11;
+            this.LbTurnRigth.Text = "Turn Rigth";
+            this.LbTurnRigth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbTurnRigth.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbTurnRigth.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbTurnRigth.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbTurnRigth.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            // 
+            // LbTurnLeft
+            // 
+            this.LbTurnLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbTurnLeft.Location = new System.Drawing.Point(188, 195);
+            this.LbTurnLeft.Name = "LbTurnLeft";
+            this.LbTurnLeft.Size = new System.Drawing.Size(97, 40);
+            this.LbTurnLeft.TabIndex = 12;
+            this.LbTurnLeft.Text = "Turn Left";
+            this.LbTurnLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LbTurnLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLbFix3d);
+            this.LbTurnLeft.MouseLeave += new System.EventHandler(this.LbUnfocused);
+            this.LbTurnLeft.MouseHover += new System.EventHandler(this.LbFocused);
+            this.LbTurnLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLbFixSing);
+            // 
+            // lbCenterLogEixos
+            // 
+            this.lbCenterLogEixos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCenterLogEixos.Location = new System.Drawing.Point(4, 246);
+            this.lbCenterLogEixos.Name = "lbCenterLogEixos";
+            this.lbCenterLogEixos.Size = new System.Drawing.Size(281, 192);
+            this.lbCenterLogEixos.TabIndex = 13;
+            this.lbCenterLogEixos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UcTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btTurnLeft);
-            this.Controls.Add(this.btTurnRigth);
-            this.Controls.Add(this.btEixoZLess);
-            this.Controls.Add(this.btEixoZPlus);
-            this.Controls.Add(this.btReset);
+            this.Controls.Add(this.lbCenterLogEixos);
+            this.Controls.Add(this.LbTurnLeft);
+            this.Controls.Add(this.LbTurnRigth);
+            this.Controls.Add(this.LbEixoZLess);
+            this.Controls.Add(this.LbEixoZPlus);
+            this.Controls.Add(this.LbReset);
             this.Controls.Add(this.lbCenterDirectional);
-            this.Controls.Add(this.btEixoXLess);
-            this.Controls.Add(this.btEixoXPlus);
-            this.Controls.Add(this.btEixoYLess);
-            this.Controls.Add(this.btEixoYPlus);
+            this.Controls.Add(this.LbEixoXLess);
+            this.Controls.Add(this.LbEixoXPlus);
+            this.Controls.Add(this.LbEixoYLess);
+            this.Controls.Add(this.LbEixoYPlus);
             this.Controls.Add(this.btIsolateSaveViewPoint);
             this.Controls.Add(this.btSaveViewPoint);
             this.Controls.Add(this.btIsolateSelection);
@@ -207,15 +257,16 @@ namespace AddinRibbon.Ctr
         private System.Windows.Forms.Button btIsolateSelection;
         private System.Windows.Forms.Button btSaveViewPoint;
         private System.Windows.Forms.Button btIsolateSaveViewPoint;
-        private System.Windows.Forms.Button btEixoYPlus;
-        private System.Windows.Forms.Button btEixoYLess;
-        private System.Windows.Forms.Button btEixoXPlus;
-        private System.Windows.Forms.Button btEixoXLess;
+        private System.Windows.Forms.Label LbEixoYPlus;
+        private System.Windows.Forms.Label LbEixoYLess;
+        private System.Windows.Forms.Label LbEixoXPlus;
+        private System.Windows.Forms.Label LbEixoXLess;
         private System.Windows.Forms.Label lbCenterDirectional;
-        private System.Windows.Forms.Button btReset;
-        private System.Windows.Forms.Button btEixoZPlus;
-        private System.Windows.Forms.Button btEixoZLess;
-        private System.Windows.Forms.Button btTurnRigth;
-        private System.Windows.Forms.Button btTurnLeft;
+        private System.Windows.Forms.Label LbReset;
+        private System.Windows.Forms.Label LbEixoZPlus;
+        private System.Windows.Forms.Label LbEixoZLess;
+        private System.Windows.Forms.Label LbTurnRigth;
+        private System.Windows.Forms.Label LbTurnLeft;
+        private Label lbCenterLogEixos;
     }
 }
