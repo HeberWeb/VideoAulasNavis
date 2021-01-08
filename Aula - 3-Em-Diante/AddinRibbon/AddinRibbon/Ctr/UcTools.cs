@@ -365,6 +365,23 @@ namespace AddinRibbon.Ctr
                 }
             }
         }
+        private void lbTesteSelClash_MouseUp(object sender, MouseEventArgs e)
+        {
+            var acd = NavisworksApp.ActiveDocument;
+            var teste = acd.Clash as DocumentClash;
+            var testeData = teste.TestsData.Tests.FirstOrDefault();
+
+            if (testeData != null)
+            {
+                var save = teste.TestsData;
+                var testeSave = testeData as ClashTest;
+                var listClahs = testeSave.Children.ToList();
+
+                var ItemFirst = listClahs.First();
+
+
+            }
+        }
 
         /// <summary>
         /// Aula 10
