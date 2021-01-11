@@ -365,22 +365,30 @@ namespace AddinRibbon.Ctr
                 }
             }
         }
+
         private void lbTesteSelClash_MouseUp(object sender, MouseEventArgs e)
         {
             var acd = NavisworksApp.ActiveDocument;
-            var teste = acd.Clash as DocumentClash;
-            var testeData = teste.TestsData.Tests.FirstOrDefault();
+            DocumentClash documentClash = acd.GetClash();
+            DocumentClashTests documentClashTests = documentClash.TestsData;
+            ClashTest clashTest = documentClashTests.Tests.First() as ClashTest;
 
-            if (testeData != null)
-            {
-                var save = teste.TestsData;
-                var testeSave = testeData as ClashTest;
-                var listClahs = testeSave.Children.ToList();
-
-                var ItemFirst = listClahs.First();
+            var testesave = clashTest.Children;
+            ClashResult result = testesave.First() as ClashResult;
 
 
-            }
+            //var testeData = teste.TestsData.Tests.FirstOrDefault();
+
+            //if (testeData != null)
+            //{
+            //    var save = teste.TestsData;
+            //    var testeSave = testeData as ClashTest;
+            //    var listClahs = testeSave.Children.ToList();
+
+            //    var ItemFirst = listClahs.First();
+
+
+            //}
         }
 
         /// <summary>
