@@ -39,7 +39,11 @@ namespace AddinRibbon.Ctr
         /// Aula 9
         /// </summary>
         public ModelItemCollection LastIsolated { get; private set; }
-        
+
+        public ModelItemCollection ClashItem1 { get; private set; }
+        public ModelItemCollection ClashItem2 { get; private set; }
+        public ModelItemCollection ClashSelectionTransparent { get; private set; }
+
         /// <summary>
         /// Aula 9
         /// </summary>
@@ -151,7 +155,7 @@ namespace AddinRibbon.Ctr
             var x = 0;
             var y = 0;
             var z = 0;
-            var inc = 10;
+            var inc = 100;
 
             if (LbEixoXPlus.BackColor.Equals(FocusedColor))
             {
@@ -249,7 +253,7 @@ namespace AddinRibbon.Ctr
         private void IsolateSelection()
         {
             var acd = NavisworksApp.ActiveDocument;
-            
+
             //resgata o primeiro elemento selecionado
             var se = acd.CurrentSelection.SelectedItems.First;
 
@@ -260,15 +264,15 @@ namespace AddinRibbon.Ctr
             {
                 //Torna visível todos os elementos
                 acd.Models.SetHidden(all, false);
-                
+
                 //Inverte seleção
                 acd.State.InvertSelection();
 
                 //Esconde os elementos selecionados
-                acd.Models.SetHidden(acd.CurrentSelection.SelectedItems, true);
+                acd.Models.SetFrozen(acd.CurrentSelection.SelectedItems, true);
 
                 //Modifica orientação da camera
-                acd.ActiveView.LookFromFrontRightTop();
+                //acd.ActiveView.LookFromFrontRightTop();
 
                 //Salva o nome da seleção atual
                 var sel = new ModelItemCollection();
@@ -277,6 +281,44 @@ namespace AddinRibbon.Ctr
 
                 LastIsolated = sel;
                 LastIsolatedName = se.DisplayName;
+            }
+            catch (Exception e)
+            {
+                //
+            }
+        }
+
+        private void IsolateSelectionClash()
+        {
+            var acd = NavisworksApp.ActiveDocument;
+            
+            //resgata o primeiro elemento selecionado
+            var se = acd.CurrentSelection.SelectedItems.First;
+
+            //resgata todos os elementos
+            var all = acd.Models.CreateCollectionFromRootItems().SelectMany(x => x.DescendantsAndSelf);
+
+            try
+            {
+                //Torna visível todos os elementos
+                //acd.Models.SetHidden(all, false);
+                
+                //Inverte seleção
+                acd.State.InvertSelection();
+                ClashSelectionTransparent = acd.CurrentSelection.SelectedItems;
+                //Esconde os elementos selecionados
+                //acd.Models.SetHidden(acd.CurrentSelection.SelectedItems, true);
+
+                //Modifica orientação da camera
+                //acd.ActiveView.LookFromFrontRightTop();
+
+                //Salva o nome da seleção atual
+                //var sel = new ModelItemCollection();
+                //sel.AddRange(se.DescendantsAndSelf);
+                //sel.AddRange(se.Ancestors);
+
+                //LastIsolated = sel;
+                //LastIsolatedName = se.DisplayName;
             }
             catch (Exception e)
             {
@@ -308,6 +350,38 @@ namespace AddinRibbon.Ctr
                 vp.anonview = cv;
 
                 state.SavedViews().Add(vp);
+            }
+            catch (Exception e)
+            {
+                //
+            }
+        }
+
+        private void SaveCurrentViewPointClash()
+        {
+            var acd = NavisworksApp.ActiveDocument;
+
+            try
+            {
+                acd.Models.OverridePermanentColor(ClashItem1, new Autodesk.Navisworks.Api.Color(124, 252, 0));
+                acd.Models.OverridePermanentColor(ClashItem2, new Autodesk.Navisworks.Api.Color(178, 34, 34));
+                acd.Models.OverridePermanentColor(ClashSelectionTransparent, new Autodesk.Navisworks.Api.Color(186, 85, 211));
+                acd.Models.OverridePermanentTransparency(ClashSelectionTransparent, 0.3);
+
+                var state = ComApiBridge.State;
+                var cv = state.CurrentView.Copy();
+                var vp = state.ObjectFactory(nwEObjectType.eObjectType_nwOpView);
+                var view = vp as InwOpView;
+
+                view.ApplyHideAttribs = true;
+                view.ApplyMaterialAttribs = true;
+
+                vp.Name = "Teste View Clash";
+                vp.anonview = cv;
+
+                state.SavedViews().Add(vp);
+
+                acd.CurrentSelection.Clear();
             }
             catch (Exception e)
             {
@@ -368,27 +442,191 @@ namespace AddinRibbon.Ctr
 
         private void lbTesteSelClash_MouseUp(object sender, MouseEventArgs e)
         {
-            var acd = NavisworksApp.ActiveDocument;
-            DocumentClash documentClash = acd.GetClash();
-            DocumentClashTests documentClashTests = documentClash.TestsData;
-            ClashTest clashTest = documentClashTests.Tests.First() as ClashTest;
+            //var acd = NavisworksApp.ActiveDocument;
+            //DocumentClash documentClash = acd.GetClash();
+            //DocumentClashTests documentClashTests = documentClash.TestsData;
+            //ClashTest clashTest = documentClashTests.Tests.First() as ClashTest;
 
-            var testesave = clashTest.Children;
-            ClashResult result = testesave.First() as ClashResult;
-
-
-            //var testeData = teste.TestsData.Tests.FirstOrDefault();
-
-            //if (testeData != null)
+            //var testesave = clashTest.Children;
+            //List<ClashResult> clashResults = new List<ClashResult>();
+            //foreach (var item in testesave)
             //{
-            //    var save = teste.TestsData;
-            //    var testeSave = testeData as ClashTest;
-            //    var listClahs = testeSave.Children.ToList();
-
-            //    var ItemFirst = listClahs.First();
-
-
+            //    clashResults.Add(item as ClashResult);
             //}
+
+            //if (clashResults.Count() > 0)
+            //{
+            //    var testeViewpoint = clashResults.First(x => x.DisplayName == "Clash3");
+            //    ClashItem1 = new ModelItemCollection();
+            //    ClashItem2 = new ModelItemCollection();
+            //    ClashSelectionTransparent = new ModelItemCollection();
+            //    ClashItem1.Add(testeViewpoint.Item1);
+            //    ClashItem2.Add(testeViewpoint.Item2);
+            //    acd.CurrentSelection.AddRange(ClashItem1);
+            //    acd.CurrentSelection.AddRange(ClashItem2);
+            //    ClashSelectionTransparent = acd.CurrentSelection.SelectedItems;
+            //    acd.State.InvertSelection();
+            //    SaveCurrentViewPointClash();
+
+            //    //var testeData = teste.TestsData.Tests.FirstOrDefault();
+
+            //    //if (testeData != null)
+            //    //{
+            //    //    var save = teste.TestsData;
+            //    //    var testeSave = testeData as ClashTest;
+            //    //    var listClahs = testeSave.Children.ToList();
+
+            //    //    var ItemFirst = listClahs.First();
+
+
+            //    //}
+            //}
+
+            InwOpState10 oState;
+
+            oState = ComApiBridge.State;
+
+
+
+            //find the clash detective plugin
+
+            InwOpClashElement m_clash = null;
+
+
+
+            foreach (InwBase oPlugin in oState.Plugins())
+
+            {
+
+                if (oPlugin.ObjectName == "nwOpClashElement")
+
+                {
+
+                    m_clash = (InwOpClashElement)oPlugin;
+
+                    break;
+
+                }
+
+            }
+
+
+
+            if (m_clash == null)
+
+            {
+
+                System.Windows.Forms.MessageBox.Show(
+
+                    "cannot find clash test plugin!");
+
+                return;
+
+            }
+
+
+
+            //Run all  clash test or specific clash
+
+            //or assume the UI has the results already
+
+
+
+            //m_clash.RunAllTests(null);
+
+
+
+
+
+            // get the plug-in of exporting image
+
+            InwOaPropertyVec options =
+
+                oState.GetIOPluginOptions("lcodpimage");
+
+
+
+            // set to the format to png
+
+            foreach (InwOaProperty opt in options.Properties())
+
+            {
+
+                if (opt.name == "export.image.format")
+
+                    opt.value = "lcodpexpng";
+
+            }
+
+
+
+            try
+
+            {
+
+                // get the first Test and its first clash result
+
+                InwOclClashTest clashTest = m_clash.Tests()[1];
+
+                InwOclTestResult clashResult = clashTest.results()[1];
+
+
+
+                // create a temporary saved viewpoint
+
+                InwOpView oSV =
+
+                    oState.ObjectFactory(
+
+                    nwEObjectType.eObjectType_nwOpView);
+
+                oSV.name = "temp-view";
+
+                oSV.anonview.ViewPoint = clashResult.GetSuitableViewPoint().Copy();
+
+                oState.SavedViews().Add(oSV);
+
+
+
+                // apply the temp saved viewpoint
+
+                oState.ApplyView(oState.SavedViews().Last());
+
+
+
+                // export it to an image
+
+                //string tempFileName =
+
+                //    "c:\\temp\\" +
+
+                //    clashTest.name + "- " +
+
+                //    clashResult.name + ".PNG";
+
+                //oState.DriveIOPlugin(
+
+                //    "lcodpimage",
+
+                //    tempFileName,
+
+                //    options);
+
+
+
+                // delete the temp saved viewpoint
+
+                oState.SavedViews().RemoveLast();
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                MessageBox.Show(ex.ToString());
+
+            }
         }
 
         /// <summary>
